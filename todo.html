@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"> 
+    <!-- stylesheets -->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style>
+        /* Document
+   ========================================================================== */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:border-box;
+    -o-box-sizing:border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+    margin: 0;
+}
+:root,html {
+	scroll-behavior: smooth;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html, body {
+    height: 100%;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+/*
+  6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+/*
+  7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+    font: inherit;
+}
+
+
+body {
+	background-color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1rem;
+	line-height: 150%;
+	font-weight: 400;
+	color:#111;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	-webkit-text-decoration-skip: objects;
+	background-color: transparent;
+	transition: all ease-in-out 0.3s;
+	-webkit-transition: all ease-in-out 0.3s;
+	-moz-transition: all ease-in-out 0.3s;
+	-o-transition: all ease-in-out 0.3s;
+	-ms-transition: all ease-in-out 0.3s;
+	color:#ff6150;
+	text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+	text-decoration: none;
+	color:#111;
+	outline: none;
+}
+
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+p {
+	margin: 0.938rem 0 0.625rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 15px;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+h1 {
+	font-size: 2.813rem;
+	line-height: 150%;
+}
+
+h2 {
+	font-size: 2.5rem;
+	line-height: 150%;
+}
+
+h3 {
+	font-size: 2.188rem;
+	line-height: 150%;
+}
+
+h4 {
+	font-size: 1.875rem;
+	line-height: 150%;
+}
+
+h5 {
+	font-size: 1.563rem;
+	line-height: 150%;
+}
+
+h6 {
+	font-size: 1.25rem;
+	line-height: 150%;
+}
+
+
+/* Page-center of the website */
+
+.full-container {
+	max-width: 100%;
+	padding: 0 2rem;
+	width: 100%;
+	margin: 0;
+	position: relative;
+}
+
+.container {
+	width: 100%;
+	padding: 0 1rem;
+	margin: 0 auto;
+	position: relative;
+}
+
+@media (min-width: 768px) {
+	.container {
+		max-width: 580px;
+	}
+}
+
+@media (min-width: 992px) {
+	.container {
+		max-width: 750px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.container {
+		max-width: 980px;
+	}
+}
+
+/* Todo List style */
+#myDIV {
+  text-align: center;
+  padding: 3rem 0;
+  background: #ffa822;
+}
+.section {
+  padding: 3rem 0;
+}
+#myInput {
+  width: 100%;
+  max-width: 65%;
+  display: inline-block;
+  border: 1px solid #134e6f;
+  border-radius: 4px;
+  padding: 0.7rem;
+  font-size: 0.857rem;
+  line-height: 150%;
+  color: #111;
+  box-shadow: 1px 1px 1px #111;
+}
+#myInput:focus,
+.addBtn{
+  outline: 0;
+}
+.addBtn {
+  background: #1ac0c6;
+  border: 0;
+  border-radius: 4px;
+  padding: 0.7rem;
+  cursor: pointer;
+  color: #fff;
+  display: inline-block;
+  min-width: 85px;
+}
+#myUL li {
+  background: #dee0e6;
+  padding: 1rem;
+  margin: 0.5rem 0 0;
+  text-transform: capitalize;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#myUL li:nth-child(odd) {
+  background: #f9f9f9;
+}
+#myUL li:hover {
+  background:#ffa822;
+  color:#fff;
+}
+#myUL li.checked {
+  background:#134e6f;
+  color: #fff;
+  text-decoration: line-through;
+}
+#myUL li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1rem;
+  width: 3rem;
+  text-align: center;
+  background: #ff6150;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #fff;
+}
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div id="myDIV" class="header">
+                <h2>My To Do List</h2>
+                <input type="text" id="myInput" placeholder="Title...">
+                <button type="button" onclick="newElement()" class="addBtn">Add</button>
+            </div>
+            <ul id="myUL">
+
+            </ul>
+        </div>
+    </section>
+    <script>
+        // Create a "close" button and append it to each list item
+var todoList = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < todoList.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+ todoList[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+    </script>
+</body>
+</html>
